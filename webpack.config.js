@@ -1,4 +1,6 @@
-export default {
+const path = require('path');
+
+module.exports = {
   mode: 'development',
   devtool: 'inline-source-map',
   entry: './src/index.js',
@@ -31,7 +33,18 @@ export default {
             loader: 'sass-loader'
           }
         ]
+      },
+      {
+        test: /\.(eot|svg|ttf|woff|woff2)$/,
+        use: {
+          loader: 'file-loader'
+        }
       }
     ]
+  },
+  devServer: {
+    contentBase: path.resolve(__dirname, 'src'),
+    port: 3000,
+    open: true
   }
 }
